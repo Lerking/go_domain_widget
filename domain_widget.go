@@ -3,11 +3,17 @@ package main
 import (
 	"github.com/lxn/walk"
 	. "github.com/lxn/walk/declarative"
+	"example/domain_widget/widgets"
 )
 
 func main() {
+	var widget *walk.HBox
+	var spinner *walk.NumberEdit
+	var spinnerval int
 	var mode *walk.ComboBox
 	var check *walk.CheckBox
+
+	&widget, &spinner, &spinnerval = intWidget()
 
 	MainWindow{
 		Title:   "SCREAMO",
@@ -34,6 +40,9 @@ func main() {
 				AssignTo: &mode,
 				Model:    []string{"Unspecified", "Not"},
 			},
+		},
+		Children: []Widget{
+			&widget,
 		},
 	}.Run()
 }
